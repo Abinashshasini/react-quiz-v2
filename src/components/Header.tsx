@@ -1,12 +1,12 @@
 import React from 'react';
-import { Wrapper, Content } from './Header.styles';
+import { Wrapper } from './Header.styles';
 
 const Header: React.FC = () => (
   <Wrapper>
-    <Content>
-      <p>icon</p>
-      <h2>Quiz App</h2>
-    </Content>
+    <h1>Let's Play</h1>
+    <div className="text">
+      Invite your friend's to a battle of wits. The smartest wins!
+    </div>
   </Wrapper>
 );
 
