@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import QuestionCard from '../../components/QuestionCard';
 import { fetchQuizQuestion } from '../../api';
 import { QuestionState, Difficulty } from '../../api';
-import { GlobalStyle, Wrapper } from './Quizs.style';
+import { Wrapper } from './Quizs.style';
 
 const TOTAL_QUESTIONS = 10;
 
@@ -102,7 +102,6 @@ function Quizs() {
             </button>
           )}
       </Wrapper>
-      <GlobalStyle />
     </>
   );
 }

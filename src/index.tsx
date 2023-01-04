@@ -1,18 +1,12 @@
-import { createRoot } from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Quizs from './layouts/quiz/Quizs';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Quizs />,
-  },
-  {
-    path: 'quiz',
-    element: <div>About</div>,
-  },
-]);
-
-createRoot(document.getElementById('root') as HTMLElement).render(
-  <RouterProvider router={router} />
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+);
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
 );
