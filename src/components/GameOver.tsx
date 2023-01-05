@@ -21,6 +21,7 @@ const GameOver: FC<Props> = ({ score }) => {
                 allowFullScreen
               ></iframe>
               <p>Noiceee Baklol...</p>
+              <p>Hello</p>
             </div>
           );
         } else {
