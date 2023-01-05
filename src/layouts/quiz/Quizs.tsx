@@ -33,18 +33,21 @@ const Quizs: FC = () => {
 
   // * Function to start the game for the user * //
   const handleStartTrivia = async () => {
-    setLoading(true);
     try {
       const response = await fetchQuizQuestion(
         TOTAL_QUESTIONS,
         Difficulty.EASY,
         quiz_id
       );
-      setQuestions(response);
-      setScore(0);
-      setUserAnswers([]);
-      setNumber(0);
-      setLoading(false);
+      if (response.length > 0) {
+        setLoading(false);
+        setQuestions(response);
+        setScore(0);
+        setUserAnswers([]);
+        setNumber(0);
+      } else {
+        setQuestions(response);
+      }
     } catch (error) {
       setLoading(false);
       console.log('Fetching question error', error);
@@ -107,12 +110,10 @@ const Quizs: FC = () => {
         setTimer(timer - 1);
       } else if (timer === 0 && !gameOver) {
         setNumber(number + 1);
-      } else {
-        return;
       }
     }, 1000);
     return () => clearInterval(newInterval);
-  }, [timer]);
+  }, [timer, loading]);
 
   return (
     <>
@@ -130,7 +131,7 @@ const Quizs: FC = () => {
         )}
         {gameOver && <GameOver score={score} />}
         {loading && <p className="loading">Wait a second...</p>}
-        {!loading && !gameOver && (
+        {!loading && !gameOver && questions.length > 0 ? (
           <QuestionCard
             questionNr={number + 1}
             totalQuestion={TOTAL_QUESTIONS}
@@ -139,6 +140,8 @@ const Quizs: FC = () => {
             userAnswer={userAnswers ? userAnswers[number] : undefined}
             callback={handleCheckAnswer}
           />
+        ) : (
+          <p className="loading">Sorry No </p>
         )}
         {!gameOver && !loading && userAnswers.length !== 0 && (
           <div className="nextbtncont">

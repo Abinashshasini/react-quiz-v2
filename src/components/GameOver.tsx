@@ -11,7 +11,6 @@ interface Props {
 }
 
 const GameOver: FC<Props> = ({ score = 0 }) => {
-  console.log('score: ', score);
   const navigate = useNavigate();
 
   return (
