@@ -27,7 +27,7 @@ const Quizs: FC = () => {
   const [number, setNumber] = useState<number>(0);
   const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
   const [score, setScore] = useState<number>(0);
-  const [gameOver, setGameOver] = useState<boolean>(false);
+  const [gameOver, setGameOver] = useState<boolean>(true);
   const [timer, setTimer] = useState<number>(TOTAL_TIME);
 
   // * Function to start the game for the user * //
@@ -105,7 +105,7 @@ const Quizs: FC = () => {
     const newInterval = setInterval(() => {
       if (timer > 0 && !loading) {
         setTimer(timer - 1);
-      } else if (timer === 0 && userAnswers.length !== TOTAL_QUESTIONS) {
+      } else if (timer === 0 && !gameOver) {
         setNumber(number + 1);
       } else {
         clearInterval(newInterval);
