@@ -49,12 +49,6 @@ export const Wrapper = styled.div`
     color: #fff;
   }
 
-  .score {
-    color: #fff;
-    font-size: 2rem;
-    margin: 0;
-  }
-
   .start {
     cursor: pointer;
     background: linear-gradient(180deg, #fff, #ffcc91);

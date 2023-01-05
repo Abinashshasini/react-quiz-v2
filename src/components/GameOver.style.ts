@@ -39,7 +39,7 @@ export const Wrapper = styled.div`
     margin: 15px 0;
   }
 
-  .score {
+  .scoretxt {
     color: var(--bluePrimary);
     font-size: 1.1rem;
     font-weight: 600;

@@ -10,7 +10,8 @@ interface Props {
   score: number;
 }
 
-const GameOver: FC<Props> = ({ score }) => {
+const GameOver: FC<Props> = ({ score = 0 }) => {
+  console.log('score: ', score);
   const navigate = useNavigate();
 
   return (
@@ -35,8 +36,8 @@ const GameOver: FC<Props> = ({ score }) => {
           <p className="para">Better luck next time please try harder</p>
         </>
       )}
-      <div className="score">Your Scored {score}</div>
-      <button className="start-again" onClick={() => navigate('/')}>
+      <div className="scoretxt">Your Scored {score}</div>
+      <button className="start-again" onClick={() => navigate(-1)}>
         Start Again
       </button>
     </Wrapper>

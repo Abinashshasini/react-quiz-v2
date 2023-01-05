@@ -108,7 +108,7 @@ const Quizs: FC = () => {
       } else if (timer === 0 && !gameOver) {
         setNumber(number + 1);
       } else {
-        clearInterval(newInterval);
+        return;
       }
     }, 1000);
     return () => clearInterval(newInterval);
