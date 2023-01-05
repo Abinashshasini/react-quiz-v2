@@ -21,19 +21,19 @@ export type AnswerObject = {
 const Quizs: FC = () => {
   const { quiz_id = '' } = useParams();
   const navigate = useNavigate();
+
   // * Required states * //
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
   const [questions, setQuestions] = useState<QuestionState[]>([]);
   const [number, setNumber] = useState<number>(0);
   const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
   const [score, setScore] = useState<number>(0);
-  const [gameOver, setGameOver] = useState<boolean>(true);
+  const [gameOver, setGameOver] = useState<boolean>(false);
   const [timer, setTimer] = useState<number>(TOTAL_TIME);
 
   // * Function to start the game for the user * //
   const handleStartTrivia = async () => {
     setLoading(true);
-    setGameOver(false);
     try {
       const response = await fetchQuizQuestion(
         TOTAL_QUESTIONS,
@@ -117,18 +117,18 @@ const Quizs: FC = () => {
   return (
     <>
       <Wrapper>
-        <div className="headerCont">
-          <div className="headerBtn" onClick={handleQuestionBack}>
-            <AiFillCaretLeft color="white" />
+        {!gameOver && (
+          <div className="headerCont">
+            <div className="headerBtn" onClick={handleQuestionBack}>
+              <AiFillCaretLeft color="white" />
+            </div>
+            <div className="headerBtnBg headerBtn">
+              <span>{timer}</span>
+            </div>
+            <div className="plandiv" />
           </div>
-          <div className="headerBtnBg headerBtn">
-            <span>{timer}</span>
-          </div>
-          <div className="plandiv" />
-        </div>
-        {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
-          <GameOver score={score} />
-        ) : null}
+        )}
+        {gameOver && <GameOver score={score} />}
         {loading && <p className="loading">Wait a second...</p>}
         {!loading && !gameOver && (
           <QuestionCard
@@ -140,16 +140,13 @@ const Quizs: FC = () => {
             callback={handleCheckAnswer}
           />
         )}
-        {!gameOver &&
-          !loading &&
-          userAnswers.length === number + 1 &&
-          number !== TOTAL_QUESTIONS - 1 && (
-            <div className="nextbtncont">
-              <button className="next" onClick={handleClickOnNextQuestion}>
-                Next Question <AiFillCaretRight color="var(--bluePrimary)" />
-              </button>
-            </div>
-          )}
+        {!gameOver && !loading && userAnswers.length !== 0 && (
+          <div className="nextbtncont">
+            <button className="next" onClick={handleClickOnNextQuestion}>
+              Next <AiFillCaretRight color="var(--bluePrimary)" />
+            </button>
+          </div>
+        )}
       </Wrapper>
     </>
   );
