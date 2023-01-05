@@ -10,11 +10,13 @@ export const Wrapper = styled.div`
     color: var(--redPrimary);
     font-weight: 700;
     font-size: 40px;
+    margin: 25px 0px 10px;
   }
 
   .text {
     color: var(--lightGrey);
-    font-weight: 400;
+    font-weight: 500;
     font-size: 0.9rem;
+    letter-spacing: 0.7px;
   }
 `;

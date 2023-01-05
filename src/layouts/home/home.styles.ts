@@ -8,7 +8,7 @@ export const Headings = styled.div`
   width: 100%;
   border-radius: 7px;
   h2 {
-    margin: 0;
+    margin: 10px 0;
     letter-spacing: 1.5px;
     color: black;
     font-size: 1rem;

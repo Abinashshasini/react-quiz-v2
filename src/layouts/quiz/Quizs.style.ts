@@ -4,7 +4,6 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(180deg, var(--blueSecondary), var(--bluePrimary));
   height: 100vh;
 
   .headerCont {
