@@ -9,6 +9,7 @@ import Computer from '../../images/desktop-computer.png';
 import Politics from '../../images/politics.png';
 import Sports from '../../images/trophy.png';
 import Movies from '../../images/video.png';
+import Header from '../../components/Header';
 //Styles
 import { Wrapper, Headings, Container } from './home.styles';
 import { BsCheckLg } from 'react-icons/bs';
@@ -66,6 +67,7 @@ const categories = [
 const Home: React.FC = () => {
   return (
     <Wrapper>
+      <Header />
       <Headings>
         <h2>Choose questions category:</h2>
       </Headings>

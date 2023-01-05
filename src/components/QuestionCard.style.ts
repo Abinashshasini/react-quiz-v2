@@ -3,14 +3,21 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   max-width: 1100px;
   width: 100%;
-  background: #ebfeff;
-  border-radius: 10px;
-  border: 2px solid #0085a3;
-  padding: 20px;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
-  text-align: center;
-  p {
-    font-size: 1rem;
+  margin-top: 100px;
+  padding: 20px 30px;
+
+  .questioNr {
+    font-size: 1.1rem;
+    color: var(--lightGrey);
+    margin: 15px 0px;
+    letter-spacing: 0.7;
+  }
+
+  .question {
+    font-size: 1.5rem;
+    color: var(--white);
+    letter-spacing: 1px;
+    margin: 15px 0px;
   }
 `;
 
@@ -27,20 +34,33 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
   button {
     cursor: pointer;
     user-select: none;
-    font-size: 0.8rem;
+    font-size: 1rem;
     width: 100%;
-    height: 40px;
-    margin: 5px 0;
+    height: 50px;
+    margin: 7px 0;
     background: ${({ correct, userClicked }) =>
       correct
-        ? 'linear-gradient(90deg, #56FFA4, #59BC86)'
+        ? 'linear-gradient(180deg, #F1D701, #B6BC07)'
         : !correct && userClicked
-        ? 'linear-gradient(90deg, #FF5656, #C16868)'
-        : 'linear-gradient(90deg, #56ccff, #6eafb4)'};
-    border: 3px solid #ffffff;
-    box-shadow: 1px 2px 0px rgba(0, 0, 0, 0.1);
+        ? 'linear-gradient(180deg, var(--redPrimary), var(--redSecondary))'
+        : 'var(--white)'};
     border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+      rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    outline: none;
+    border: none;
     color: #fff;
     text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.25);
+    padding: 0px 10px;
+
+    span {
+      color: ${({ correct, userClicked }) =>
+        correct
+          ? 'var(--white)'
+          : !correct && userClicked
+          ? 'var(--white)'
+          : 'var(--bluePrimary)'};
+      font-weight: 500;
+    }
   }
 `;

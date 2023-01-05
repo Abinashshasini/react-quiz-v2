@@ -18,9 +18,10 @@ export type QuestionState = Question & { answers: string[] };
 
 export const fetchQuizQuestion = async (
   amount: number,
-  difficulty: Difficulty
+  difficulty: Difficulty,
+  category: string | undefined
 ) => {
-  const endpoint = `https://opentdb.com/api.php?amount=${amount}&type=multiple&difficulty=${difficulty}`;
+  const endpoint = `https://opentdb.com/api.php?amount=${amount}&type=multiple&difficulty=${difficulty}&category=${category}`;
   const response = await (await fetch(endpoint)).json();
   return response.results.map((question: Question) => ({
     ...question,

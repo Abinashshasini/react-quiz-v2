@@ -2,7 +2,6 @@ import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from './layouts/home/Home';
 import Quizs from './layouts/quiz/Quizs';
-import Header from './components/Header';
 import { GlobalStyle } from './GlobalStyle';
 
 const router = createBrowserRouter([
@@ -11,7 +10,7 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: 'quiz',
+    path: ':quiz_id',
     element: <Quizs />,
   },
 ]);
@@ -19,7 +18,6 @@ const router = createBrowserRouter([
 const App = () => {
   return (
     <>
-      <Header />
       <RouterProvider router={router} />
       <GlobalStyle />
     </>

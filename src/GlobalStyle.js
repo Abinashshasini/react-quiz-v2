@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
     --redPrimary: #f55778;
     --redSecondary: #ED8773;
     --white: #fff;
-    --lightGrey: #AAA4A4;
+    --lightGrey: #C8D7F5;
     --bluePrimary: #5673EC;
     --blueSecondary: #0EB5FC;
     --violatePrimary: #A58ED0;
@@ -19,7 +19,7 @@ export const GlobalStyle = createGlobalStyle`
 
   * {
     box-sizing: border-box;
-    font-family: 'Catamaran', sans-serif;
+    font-family: sans-serif;
   }
 
   body {  
