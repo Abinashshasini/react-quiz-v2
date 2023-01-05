@@ -49,6 +49,14 @@ export const Wrapper = styled.div`
     color: #fff;
   }
 
+  .loading {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+  }
+
   .start {
     cursor: pointer;
     background: linear-gradient(180deg, #fff, #ffcc91);

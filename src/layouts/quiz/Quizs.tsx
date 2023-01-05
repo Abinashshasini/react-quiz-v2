@@ -4,8 +4,11 @@ import QuestionCard from '../../components/QuestionCard';
 import GameOver from '../../components/GameOver';
 import { fetchQuizQuestion } from '../../api';
 import { QuestionState, Difficulty } from '../../api';
+import Lottie from 'lottie-react';
 import { useNavigate, useParams } from 'react-router';
 import { AiFillCaretLeft, AiFillCaretRight } from 'react-icons/ai';
+import loadingAnimation from '../../images/loading.json';
+import errorAnimastion from '../../images/error.json';
 import { Wrapper } from './Quizs.style';
 
 const TOTAL_QUESTIONS = 10;
@@ -24,6 +27,7 @@ const Quizs: FC = () => {
 
   // * Required states * //
   const [loading, setLoading] = useState<boolean>(true);
+  const [error, SetError] = useState<boolean>(false);
   const [questions, setQuestions] = useState<QuestionState[]>([]);
   const [number, setNumber] = useState<number>(0);
   const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
@@ -39,14 +43,14 @@ const Quizs: FC = () => {
         Difficulty.EASY,
         quiz_id
       );
+      setLoading(false);
       if (response.length > 0) {
-        setLoading(false);
         setQuestions(response);
         setScore(0);
         setUserAnswers([]);
         setNumber(0);
       } else {
-        setQuestions(response);
+        SetError(true);
       }
     } catch (error) {
       setLoading(false);
@@ -118,7 +122,7 @@ const Quizs: FC = () => {
   return (
     <>
       <Wrapper>
-        {!gameOver && (
+        {!gameOver && !error && (
           <div className="headerCont">
             <div className="headerBtn" onClick={handleQuestionBack}>
               <AiFillCaretLeft color="white" />
@@ -130,8 +134,12 @@ const Quizs: FC = () => {
           </div>
         )}
         {gameOver && <GameOver score={score} />}
-        {loading && <p className="loading">Wait a second...</p>}
-        {!loading && !gameOver && questions.length > 0 ? (
+        {loading && (
+          <div className="loading">
+            <Lottie animationData={loadingAnimation} loop={true} />
+          </div>
+        )}
+        {!loading && !gameOver && !error && (
           <QuestionCard
             questionNr={number + 1}
             totalQuestion={TOTAL_QUESTIONS}
@@ -140,8 +148,11 @@ const Quizs: FC = () => {
             userAnswer={userAnswers ? userAnswers[number] : undefined}
             callback={handleCheckAnswer}
           />
-        ) : (
-          <p className="loading">Sorry No </p>
+        )}
+        {error && (
+          <div className="loading">
+            <Lottie animationData={errorAnimastion} loop={true} />
+          </div>
         )}
         {!gameOver && !loading && userAnswers.length !== 0 && (
           <div className="nextbtncont">
