@@ -13,12 +13,9 @@ interface Props {
 const GameOver: FC<Props> = ({ score }) => {
   const navigate = useNavigate();
 
-  // * Function to redirect the user to home * //
-  const handleStartAgain = () => navigate('/');
-
   return (
     <Wrapper>
-      {score > 4 ? (
+      {score > 1 ? (
         <>
           <div className="gifcont">
             <Lottie animationData={congratulation} loop={true} />
@@ -39,7 +36,7 @@ const GameOver: FC<Props> = ({ score }) => {
         </>
       )}
       <div className="score">Your Scored {score}</div>
-      <button className="start-again" onClick={() => handleStartAgain()}>
+      <button className="start-again" onClick={() => navigate('/')}>
         Start Again
       </button>
     </Wrapper>

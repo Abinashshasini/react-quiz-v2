@@ -40,9 +40,9 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
     margin: 7px 0;
     background: ${({ correct, userClicked }) =>
       correct
-        ? 'linear-gradient(180deg, #F1D701, #B6BC07)'
+        ? '#F1D701'
         : !correct && userClicked
-        ? 'linear-gradient(180deg, var(--redPrimary), var(--redSecondary))'
+        ? 'var(--redPrimary)'
         : 'var(--white)'};
     border-radius: 10px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
