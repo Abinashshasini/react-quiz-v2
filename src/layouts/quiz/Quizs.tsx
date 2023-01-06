@@ -12,7 +12,7 @@ import errorAnimastion from '../../images/error.json';
 import { Wrapper } from './Quizs.style';
 
 const TOTAL_QUESTIONS = 10;
-const TOTAL_TIME = 20;
+const TOTAL_TIME = 30;
 
 export type AnswerObject = {
   question: string;
@@ -107,7 +107,7 @@ const Quizs: FC = () => {
     setTimer(TOTAL_TIME);
   }, [number]);
 
-  // * Effect to create a timer when user is checking the question * //
+  //  * Effect to create a timer when user is checking the question * //
   useEffect(() => {
     const newInterval = setInterval(() => {
       if (timer > 0 && !loading) {
@@ -133,7 +133,7 @@ const Quizs: FC = () => {
             <div className="plandiv" />
           </div>
         )}
-        {gameOver && <GameOver score={score} />}
+        {/* {gameOver && <GameOver score={score} />} */}
         {loading && (
           <div className="loading">
             <Lottie animationData={loadingAnimation} loop={true} />
@@ -151,6 +151,7 @@ const Quizs: FC = () => {
         )}
         {error && (
           <div className="loading">
+            <p>No results found 😰</p>
             <Lottie animationData={errorAnimastion} loop={true} />
           </div>
         )}

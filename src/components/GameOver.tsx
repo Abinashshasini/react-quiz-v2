@@ -6,12 +6,10 @@ import congratulation from '../images/cong.json';
 import completeed from '../images/complete.json';
 import failed from '../images/failed.json';
 import { useNavigate } from 'react-router';
-interface Props {
-  score: number;
-}
 
-const GameOver: FC<Props> = ({ score = 0 }) => {
+const GameOver: FC = () => {
   const navigate = useNavigate();
+  let score = 2;
 
   return (
     <Wrapper>

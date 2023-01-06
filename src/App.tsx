@@ -2,6 +2,7 @@ import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from './layouts/home/Home';
 import Quizs from './layouts/quiz/Quizs';
+import GameOver from './components/GameOver';
 import { GlobalStyle } from './GlobalStyle';
 import './App.css';
 
@@ -11,8 +12,12 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: ':quiz_id',
+    path: ':category/:quiz_id',
     element: <Quizs />,
+  },
+  {
+    path: ':category/:quiz_id/game_over/:score',
+    element: <GameOver />,
   },
 ]);
 

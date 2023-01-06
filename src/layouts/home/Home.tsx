@@ -73,7 +73,10 @@ const Home: React.FC = () => {
       </Headings>
       <Container>
         {categories.map((element, index) => (
-          <Link to={`/${element.id}`} key={`${element.id}-${index}`}>
+          <Link
+            to={`/${element.text.replace(/\s/g, '-')}/${element.id}`}
+            key={`${element.id}-${index}`}
+          >
             <div
               className="Item"
               style={{

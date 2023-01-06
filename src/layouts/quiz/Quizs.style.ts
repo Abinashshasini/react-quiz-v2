@@ -16,15 +16,15 @@ export const Wrapper = styled.div`
     .headerBtn {
       border-radius: 50%;
       border: 1px solid var(--white);
-      width: 35px;
-      height: 35px;
+      width: 40px;
+      height: 40px;
       display: flex;
       justify-content: center;
       align-items: center;
 
       svg {
-        width: 20px;
-        height: 20px;
+        width: 25px;
+        height: 25px;
       }
     }
 
@@ -34,12 +34,12 @@ export const Wrapper = styled.div`
     }
 
     .headerBtnBg {
-      width: 50px;
-      height: 50px;
-      border: 3px solid var(--lightGrey);
+      width: 65px;
+      height: 65px;
+      border: 5px solid var(--lightGrey);
       span {
         color: var(--white);
-        font-size: 1.7rem;
+        font-size: 1.8rem;
       }
     }
   }
@@ -50,10 +50,21 @@ export const Wrapper = styled.div`
 
   .loading {
     height: 100%;
+    width: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 250px;
+    flex-direction: column;
+
+    > svg {
+      width: 150px;
+    }
+
+    > p {
+      color: var(--white);
+      font-size: 1.2rem;
+      letter-spacing: 0.5px;
+    }
   }
 
   .start {
