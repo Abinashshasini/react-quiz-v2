@@ -8,7 +8,7 @@ export const Headings = styled.div`
   width: 100%;
 
   h2 {
-    margin: 10px 0;
+    margin: 5px 0;
     letter-spacing: 1.5px;
     color: var(--white);
     font-size: 1rem;
@@ -55,7 +55,9 @@ export const Container = styled.div`
     }
 
     .heading {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-top: 7px;
     }
 
     img {
@@ -68,6 +70,6 @@ export const Container = styled.div`
   }
 
   .Item:first-child {
-    margin-top: 30px;
+    margin-top: 50px;
   }
 `;

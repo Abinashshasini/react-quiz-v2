@@ -17,6 +17,6 @@ export const Wrapper = styled.div`
     color: var(--lightGrey);
     font-weight: 500;
     font-size: 0.9rem;
-    letter-spacing: 0.7px;
+    letter-spacing: 0.7;
   }
 `;

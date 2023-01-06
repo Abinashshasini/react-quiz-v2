@@ -81,7 +81,6 @@ const Home: React.FC = () => {
               }}
             >
               <img src={element.img} alt="category " />
-
               <div className="icons">
                 <BsCheckLg color="white" />
               </div>

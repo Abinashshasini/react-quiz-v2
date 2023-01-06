@@ -27,7 +27,8 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    height: 120vh;
+    height: 100%;
+    min-height: 120vh;
     background-image: url(${BGImg});
     background-size: cover;
     background-repeat: no-repeat;
