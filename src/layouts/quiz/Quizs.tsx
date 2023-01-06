@@ -106,6 +106,7 @@ const Quizs: FC = () => {
 
   // * initial useEffect to call the API based upon users selected category * //
   useEffect(() => {
+    window.scrollTo(0, 0);
     handleStartTrivia();
   }, []);
 
