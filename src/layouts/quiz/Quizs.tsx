@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, FC } from 'react';
 import QuestionCard from '../../components/QuestionCard';
-import GameOver from '../../components/GameOver';
 import { fetchQuizQuestion } from '../../api';
 import { QuestionState, Difficulty } from '../../api';
 import Lottie from 'lottie-react';
@@ -10,6 +9,7 @@ import { AiFillCaretLeft, AiFillCaretRight } from 'react-icons/ai';
 import loadingAnimation from '../../images/loading.json';
 import errorAnimastion from '../../images/error.json';
 import { Wrapper } from './Quizs.style';
+import { useLocation } from 'react-router';
 
 const TOTAL_QUESTIONS = 10;
 const TOTAL_TIME = 30;
@@ -24,6 +24,7 @@ export type AnswerObject = {
 const Quizs: FC = () => {
   const { quiz_id = '' } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
 
   // * Required states * //
   const [loading, setLoading] = useState<boolean>(true);
@@ -81,8 +82,14 @@ const Quizs: FC = () => {
   // * Fucntion to navigate the user to next question if it's not the last question * //
   const handleClickOnNextQuestion = () => {
     const nextQuestion = number + 1;
+    // If user has not answered then don't navigate to the next question
+    if (nextQuestion !== userAnswers.length) {
+      return;
+    }
+    // If user has reached the last question then navigate the user to details page or increase the question
     if (nextQuestion === TOTAL_QUESTIONS) {
       setGameOver(true);
+      navigate(`${location.pathname}/game_over/${score}`);
     } else {
       setNumber(nextQuestion);
     }

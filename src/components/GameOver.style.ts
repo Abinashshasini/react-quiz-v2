@@ -7,7 +7,6 @@ export const Wrapper = styled.div`
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  background: var(--white);
 
   .gifcont {
     position: absolute;
@@ -57,5 +56,6 @@ export const Wrapper = styled.div`
     font-size: 1rem;
     letter-spacing: 1px;
     font-weight: bold;
+    z-index: 30;
   }
 `;

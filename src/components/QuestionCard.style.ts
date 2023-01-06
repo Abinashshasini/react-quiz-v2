@@ -40,7 +40,7 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
     margin: 7px 0;
     background: ${({ correct, userClicked }) =>
       correct
-        ? '#F1D701'
+        ? '#00E55B'
         : !correct && userClicked
         ? 'var(--redPrimary)'
         : 'var(--white)'};
