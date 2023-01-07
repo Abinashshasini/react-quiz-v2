@@ -5,6 +5,8 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   height: 100vh;
+  max-width: 1100px;
+  margin: 0 auto;
 
   .headerCont {
     width: 100%;
@@ -58,7 +60,7 @@ export const Wrapper = styled.div`
         }
 
         #circle1 {
-          stroke: black;
+          stroke: gray;
         }
 
         #circle2 {

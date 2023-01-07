@@ -117,8 +117,13 @@ const Quizs: FC = () => {
     const newInterval = setInterval(() => {
       if (timer > 0 && !loading) {
         setTimer(timer - 1);
-      } else if (timer === 0 && !gameOver) {
+      } else if (timer === 0 && number !== TOTAL_QUESTIONS - 1) {
         setNumber(number + 1);
+      } else if (!loading) {
+        setGameOver(true);
+        navigate(`${location.pathname}/game_over/${score}`);
+      } else {
+        return;
       }
     }, 1000);
     return () => clearInterval(newInterval);
