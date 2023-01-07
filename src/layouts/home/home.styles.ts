@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   padding: 0px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
 `;
 
 export const Headings = styled.div`
@@ -16,6 +18,10 @@ export const Headings = styled.div`
 `;
 
 export const Container = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 2rem;
+  padding-bottom: 100px;
   a {
     text-decoration: none;
   }
@@ -29,7 +35,6 @@ export const Container = styled.div`
     border-radius: 20px;
     overflow: visible;
     position: relative;
-    margin: 20px 0px 60px;
     padding: 20px 10px;
     padding-left: 20px;
     .icons {

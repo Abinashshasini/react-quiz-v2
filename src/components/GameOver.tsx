@@ -41,7 +41,7 @@ const GameOver: FC = () => {
       )}
       <div className="scoretxt">Your Scored {score}</div>
       <button className="start-again" onClick={handleClickOnPlayAgain}>
-        Play Again
+        Start Another
       </button>
     </Wrapper>
   );

@@ -64,12 +64,12 @@ export const Wrapper = styled.div`
         }
 
         #circle2 {
-          stroke: var(--white);
           transition: 1s linear;
           stroke-dasharray: 188px;
           stroke-dashoffset: 0px;
           stroke-linecap: round;
-          animation: countdown 21s linear infinite forwards;
+          animation: countdown 21s linear infinite forwards,
+            color 21s linear infinite forwards;
         }
 
         @keyframes countdown {
@@ -78,6 +78,24 @@ export const Wrapper = styled.div`
           }
           to {
             stroke-dashoffset: 188px;
+          }
+        }
+
+        @keyframes color {
+          100%,
+          0%,
+          40% {
+            stroke: #00e55b;
+          }
+
+          50%,
+          80% {
+            stroke: yellow;
+          }
+
+          80%,
+          100% {
+            stroke: var(--redPrimary);
           }
         }
       }
