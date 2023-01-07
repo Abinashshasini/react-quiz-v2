@@ -11,20 +11,19 @@ export const Wrapper = styled.div`
     display: flex;
     justify-content: space-between;
     padding: 30px 20px;
+    min-height: 130px;
     align-items: center;
 
     .headerBtn {
-      border-radius: 50%;
-      border: 1px solid var(--white);
-      width: 40px;
-      height: 40px;
+      width: 50px;
+      height: 50px;
       display: flex;
       justify-content: center;
       align-items: center;
 
       svg {
-        width: 25px;
-        height: 25px;
+        width: 35px;
+        height: 35px;
       }
     }
 
@@ -33,13 +32,52 @@ export const Wrapper = styled.div`
       height: 35px;
     }
 
-    .headerBtnBg {
-      width: 65px;
-      height: 65px;
-      border: 5px solid var(--lightGrey);
-      span {
+    .timerCont {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .time {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
         color: var(--white);
         font-size: 1.8rem;
+      }
+
+      svg {
+        display: inline-block;
+        transform: rotate(-90deg);
+
+        circle {
+          stroke-width: 5px;
+          fill: transparent;
+          stroke-linecap: round;
+        }
+
+        #circle1 {
+          stroke: black;
+        }
+
+        #circle2 {
+          stroke: var(--white);
+          transition: 1s linear;
+          stroke-dasharray: 188px;
+          stroke-dashoffset: 0px;
+          stroke-linecap: round;
+          animation: countdown 21s linear infinite forwards;
+        }
+
+        @keyframes countdown {
+          from {
+            stroke-dashoffset: 0px;
+          }
+          to {
+            stroke-dashoffset: 188px;
+          }
+        }
       }
     }
   }

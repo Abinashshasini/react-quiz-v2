@@ -5,14 +5,15 @@ import { fetchQuizQuestion } from '../../api';
 import { QuestionState, Difficulty } from '../../api';
 import Lottie from 'lottie-react';
 import { useNavigate, useParams } from 'react-router';
-import { AiFillCaretLeft, AiFillCaretRight } from 'react-icons/ai';
+import { AiFillCaretRight } from 'react-icons/ai';
+import { IoIosArrowBack } from 'react-icons/io';
 import loadingAnimation from '../../images/loading.json';
 import errorAnimastion from '../../images/error.json';
 import { Wrapper } from './Quizs.style';
 import { useLocation } from 'react-router';
 
 const TOTAL_QUESTIONS = 10;
-const TOTAL_TIME = 30;
+const TOTAL_TIME = 20;
 
 export type AnswerObject = {
   question: string;
@@ -97,11 +98,7 @@ const Quizs: FC = () => {
 
   // * Function to handle question back * //
   const handleQuestionBack = () => {
-    if (number !== 0) {
-      setNumber(number - 1);
-    } else {
-      navigate(-1);
-    }
+    navigate(-1);
   };
 
   // * initial useEffect to call the API based upon users selected category * //
@@ -133,15 +130,22 @@ const Quizs: FC = () => {
         {!gameOver && !error && (
           <div className="headerCont">
             <div className="headerBtn" onClick={handleQuestionBack}>
-              <AiFillCaretLeft color="white" />
+              <IoIosArrowBack color="white" />
             </div>
-            <div className="headerBtnBg headerBtn">
-              <span>{timer}</span>
-            </div>
+            {!loading && (
+              <div className="timerCont">
+                <div className="time">
+                  <span>{timer}</span>
+                </div>
+                <svg width="70" height="70">
+                  <circle id="circle1" cx="35" cy="35" r="30"></circle>
+                  <circle id="circle2" cx="35" cy="35" r="30"></circle>
+                </svg>
+              </div>
+            )}
             <div className="plandiv" />
           </div>
         )}
-        {/* {gameOver && <GameOver score={score} />} */}
         {loading && (
           <div className="loading">
             <Lottie animationData={loadingAnimation} loop={true} />

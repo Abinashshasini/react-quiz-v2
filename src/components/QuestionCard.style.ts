@@ -61,6 +61,7 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
           ? 'var(--white)'
           : 'var(--bluePrimary)'};
       font-weight: 500;
+      letter-spacing: 0.6px;
     }
   }
 `;
