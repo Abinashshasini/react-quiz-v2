@@ -131,26 +131,24 @@ const Quizs: FC = () => {
 
   return (
     <>
-      <Wrapper>
-        {!gameOver && !error && (
-          <div className="headerCont">
-            <div className="headerBtn" onClick={handleQuestionBack}>
-              <IoIosArrowBack color="white" />
-            </div>
-            {!loading && (
-              <div className="timerCont">
-                <div className="time">
-                  <span>{timer}</span>
-                </div>
-                <svg width="70" height="70">
-                  <circle id="circle1" cx="35" cy="35" r="30"></circle>
-                  <circle id="circle2" cx="35" cy="35" r="30"></circle>
-                </svg>
-              </div>
-            )}
-            <div className="plandiv" />
+      <Wrapper totalTime={TOTAL_TIME}>
+        <div className="headerCont">
+          <div className="headerBtn" onClick={handleQuestionBack}>
+            <IoIosArrowBack color="white" />
           </div>
-        )}
+          {!loading && !error && (
+            <div className="timerCont">
+              <div className="time">
+                <span>{timer}</span>
+              </div>
+              <svg width="70" height="70">
+                <circle id="circle1" cx="35" cy="35" r="30"></circle>
+                <circle id="circle2" cx="35" cy="35" r="30"></circle>
+              </svg>
+            </div>
+          )}
+          <div className="plandiv" />
+        </div>
         {loading && (
           <div className="loading">
             <Lottie animationData={loadingAnimation} loop={true} />

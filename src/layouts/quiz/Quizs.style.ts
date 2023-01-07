@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+type Props = {
+  totalTime: number;
+};
+
+export const Wrapper = styled.div<Props>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -68,8 +72,10 @@ export const Wrapper = styled.div`
           stroke-dasharray: 188px;
           stroke-dashoffset: 0px;
           stroke-linecap: round;
-          animation: countdown 21s linear infinite forwards,
-            color 21s linear infinite forwards;
+          animation: ${({ totalTime }) => `countdown ${
+            totalTime + 1
+          }s linear infinite forwards,
+            color ${totalTime + 1}s linear infinite forwards`};
         }
 
         @keyframes countdown {
@@ -107,7 +113,7 @@ export const Wrapper = styled.div`
   }
 
   .loading {
-    height: 100%;
+    height: 70%;
     width: 200px;
     display: flex;
     justify-content: center;
