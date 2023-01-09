@@ -72,13 +72,13 @@ export const Wrapper = styled.div<Props>`
           stroke-dasharray: 188px;
           stroke-dashoffset: 0px;
           stroke-linecap: round;
-          animation: ${({ totalTime }) => `countdown ${
+          animation: ${({ totalTime }) => `countdownAnimation ${
             totalTime + 1
           }s linear infinite forwards,
-            color ${totalTime + 1}s linear infinite forwards`};
+            colorAnimation ${totalTime + 1}s linear infinite forwards`};
         }
 
-        @keyframes countdown {
+        @keyframes countdownAnimation {
           from {
             stroke-dashoffset: 0px;
           }
@@ -87,7 +87,7 @@ export const Wrapper = styled.div<Props>`
           }
         }
 
-        @keyframes color {
+        @keyframes colorAnimation {
           100%,
           0%,
           40% {
