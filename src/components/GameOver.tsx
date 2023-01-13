@@ -19,7 +19,7 @@ const GameOver: FC = () => {
 
   return (
     <Wrapper>
-      {Number(score) > 1 ? (
+      {Number(score) > 3 ? (
         <>
           <div className="gifcont">
             <Lottie animationData={congratulation} loop={true} />
