@@ -10,8 +10,8 @@ import { AiFillCaretRight } from 'react-icons/ai';
 import { IoIosArrowBack } from 'react-icons/io';
 import loadingAnimation from '../../images/loading.json';
 import errorAnimastion from '../../images/error.json';
-import { Wrapper } from './Quizs.style';
 import { useLocation } from 'react-router';
+import { Wrapper } from './Quizs.style';
 
 const TOTAL_QUESTIONS = 10;
 const TOTAL_TIME = 20;
@@ -168,6 +168,7 @@ const Quizs: FC = () => {
               </svg>
             </div>
           )}
+          <div className="plandiv" />
         </div>
         {loading && (
           <div className="loading">
