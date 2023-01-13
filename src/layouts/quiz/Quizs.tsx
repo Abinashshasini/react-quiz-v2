@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect, FC } from 'react';
+// @ts-nocheck
+import React, { useState, useEffect, FC, useRef } from 'react';
 import QuestionCard from '../../components/QuestionCard';
 import { fetchQuizQuestion } from '../../api';
 import { QuestionState, Difficulty } from '../../api';
@@ -14,6 +15,7 @@ import { useLocation } from 'react-router';
 
 const TOTAL_QUESTIONS = 10;
 const TOTAL_TIME = 20;
+let LENGTH = 0;
 
 export type AnswerObject = {
   question: string;
@@ -36,6 +38,7 @@ const Quizs: FC = () => {
   const [score, setScore] = useState<number>(0);
   const [gameOver, setGameOver] = useState<boolean>(false);
   const [timer, setTimer] = useState<number>(TOTAL_TIME);
+  const circleAnimationRef = useRef<SVGCircleElement>(null);
 
   // * Function to start the game for the user * //
   const handleStartTrivia = async () => {
@@ -112,11 +115,23 @@ const Quizs: FC = () => {
     setTimer(TOTAL_TIME);
   }, [number]);
 
+  // * Effect to get the circle when completed loading * //
+  useEffect(() => {
+    if (!loading) {
+      LENGTH = circleAnimationRef.current.getTotalLength();
+      circleAnimationRef.current.style.strokeDasharray = LENGTH;
+      circleAnimationRef.current.style.strokeDashoffset = 0;
+    }
+  }, [loading]);
+
   //  * Effect to create a timer when user is checking the question * //
   useEffect(() => {
     const newInterval = setInterval(() => {
       if (timer > 0 && !loading) {
         setTimer(timer - 1);
+        // setting the circle dash offset for reducing the circle
+        circleAnimationRef.current.style.strokeDashoffset =
+          LENGTH - (timer / 22) * LENGTH;
       } else if (timer === 0 && number !== TOTAL_QUESTIONS - 1) {
         setNumber(number + 1);
       } else if (!loading) {
@@ -143,11 +158,16 @@ const Quizs: FC = () => {
               </div>
               <svg width="70" height="70">
                 <circle id="circle1" cx="35" cy="35" r="30"></circle>
-                <circle id="circle2" cx="35" cy="35" r="30"></circle>
+                <circle
+                  id="circle2"
+                  cx="35"
+                  cy="35"
+                  r="30"
+                  ref={circleAnimationRef}
+                ></circle>
               </svg>
             </div>
           )}
-          <div className="plandiv" />
         </div>
         {loading && (
           <div className="loading">

@@ -20,6 +20,14 @@ export const Wrapper = styled.div<Props>`
     min-height: 130px;
     align-items: center;
 
+    a {
+      background-color: yellow;
+      padding: 20px 0.5em;
+      border-radius: 3rem;
+      font-size: 1.2rem;
+      line-height: 0;
+    }
+
     .headerBtn {
       width: 50px;
       height: 50px;
@@ -70,12 +78,13 @@ export const Wrapper = styled.div<Props>`
         #circle2 {
           transition: 1s linear;
           stroke-dasharray: 188px;
-          stroke-dashoffset: 0px;
+          stroke: #00e55b;
           stroke-linecap: round;
-          animation: ${({ totalTime }) => `countdownAnimation ${
+          /* stroke-dashoffset: 0px; */
+          /* animation: ${({ totalTime }) => `countdownAnimation ${
             totalTime + 1
           }s linear infinite forwards,
-            colorAnimation ${totalTime + 1}s linear infinite forwards`};
+            colorAnimation ${totalTime + 1}s linear infinite forwards`}; */
         }
 
         @keyframes countdownAnimation {
