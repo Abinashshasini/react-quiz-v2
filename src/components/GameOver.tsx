@@ -36,7 +36,10 @@ const GameOver: FC = () => {
           <div className="comp">
             <Lottie animationData={failed} loop={true} />
           </div>
-          <p className="para">Better luck next time please try harder</p>
+          <p className="para">
+            Better luck next, you have t0 score more than 3 points to clear the
+            test
+          </p>
         </>
       )}
       <div className="scoretxt">Your Scored {score}</div>
