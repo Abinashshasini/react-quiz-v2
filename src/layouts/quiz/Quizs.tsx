@@ -113,11 +113,14 @@ const Quizs: FC = () => {
   // * Effect to reset the timer when question changes * //
   useEffect(() => {
     setTimer(TOTAL_TIME);
+    if (!loading && !error) {
+      circleAnimationRef.current.style.strokeDashoffset = 0;
+    }
   }, [number]);
 
   // * Effect to get the circle when completed loading * //
   useEffect(() => {
-    if (!loading) {
+    if (!loading && !error) {
       LENGTH = circleAnimationRef.current.getTotalLength();
       circleAnimationRef.current.style.strokeDasharray = LENGTH;
       circleAnimationRef.current.style.strokeDashoffset = 0;

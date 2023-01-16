@@ -28,6 +28,7 @@ type ButtonWrapperProps = {
 
 export const ButtonWrapper = styled.div<ButtonWrapperProps>`
   transition: all 0.3s ease;
+  z-index: 20;
   :hover {
     opacity: 0.8;
   }
